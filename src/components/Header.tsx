@@ -48,13 +48,13 @@ export default function Header() {
       <div className="container-x">
         <div
           className={`flex items-center justify-between transition-all duration-300 ${
-            scrolled ? "h-[74px]" : "h-[92px]"
+            scrolled ? "h-[82px]" : "h-[104px]"
           }`}
         >
           <Link href="/" aria-label={`${company.name} — home`}>
             <Logo
               className={`w-auto transition-all duration-300 ${
-                scrolled ? "h-12" : "h-14"
+                scrolled ? "h-14" : "h-[68px]"
               }`}
             />
           </Link>
@@ -69,7 +69,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative font-display text-[15px] tracking-wide transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-gold-500 after:transition-all ${
+                  className={`relative font-display text-[15px] font-semibold tracking-wide transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-gold-500 after:transition-all ${
                     active
                       ? "text-gold-600 after:w-full"
                       : "text-ink hover:text-gold-600 after:w-0 hover:after:w-full"
@@ -121,7 +121,7 @@ export default function Header() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-x-0 top-[74px] bottom-0 z-40 origin-top bg-white transition-all duration-300 lg:hidden ${
+        className={`fixed inset-x-0 top-[82px] bottom-0 z-40 origin-top bg-white transition-all duration-300 lg:hidden ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"
@@ -133,7 +133,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               style={{ animationDelay: `${i * 45}ms` }}
-              className={`border-b border-cream-dark py-4 font-display text-lg ${
+              className={`border-b border-cream-dark py-4 font-display text-lg font-semibold ${
                 open ? "animate-fade-up" : ""
               } ${
                 pathname === item.href ? "text-gold-600" : "text-ink"

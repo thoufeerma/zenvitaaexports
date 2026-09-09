@@ -13,6 +13,11 @@
   --color-gold-800: #5f4a2d;
   --color-gold-900: #3d301d;
 
+  /* The Coir Mats page carries its own green accent */
+  --color-coir: #2e9d32;
+  --color-coir-dark: #1f6b22;
+  --color-coir-light: #eaf7ee;
+
   --color-cream: #f5f1e8;
   --color-cream-dark: #ece5d6;
   --color-ink: #1f1f1f;
@@ -124,6 +129,11 @@
     width: 1.75rem;
     height: 1px;
     background: var(--color-gold-500);
+  }
+
+  /* Same label without the leading rule, so it sits flush with the heading */
+  .eyebrow-plain::before {
+    display: none;
   }
 
   .eyebrow-center::after {

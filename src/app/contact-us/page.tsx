@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import AppointmentForm from "@/components/AppointmentForm";
-import { company } from "@/lib/site";
-import {
-  MailIcon,
-  PhoneIcon,
-  PinIcon,
-  DocIcon,
-  SocialIcon,
-} from "@/components/Icons";
+import { company, contactImages } from "@/lib/site";
+import { MailIcon, PhoneIcon, PinIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -20,82 +13,66 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const mapQuery = encodeURIComponent(
-    "Asten Viveria, Thengode, Kakkanad, Ernakulam, Kerala 682030",
+    "Asten Viveria Apartment, Thrikkakara, Kakkanad, Ernakulam, Kerala 682030",
   );
 
   return (
     <>
       <PageHero
-        eyebrow="Get in touch"
         title="Contact Us"
-        body="We would love to hear from you. Send us your requirement and our export team will take it from there."
+        body="We would love to hear from you."
+        image={contactImages.hero}
+        align="left"
+        showCrumb={false}
       />
 
       <section className="bg-white py-20 lg:py-28">
         <div className="container-x">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Details */}
-            <div className="lg:col-span-5">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Get in touch */}
+            <div>
               <Reveal>
-                <span className="eyebrow">Our Office</span>
-                <h2 className="mt-4 text-3xl sm:text-4xl">
-                  {company.legalName}
+                <h2 className="text-3xl font-semibold sm:text-4xl">
+                  Get in touch
                 </h2>
+                <p className="mt-5 text-[16px] leading-relaxed text-ink-soft">
+                  Have questions about our food ingredient powders or export
+                  services?
+                  <br />
+                  Contact our team to learn more about our products and global
+                  export services.
+                </p>
               </Reveal>
 
-              <dl className="mt-9 space-y-7">
-                <Reveal delay={80} className="flex gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-cream text-gold-600">
-                    <PinIcon className="size-5" />
+              <hr className="my-9 border-cream-dark" />
+
+              <dl className="space-y-8">
+                <Reveal className="flex gap-5">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-gold-100 text-ink">
+                    <PinIcon className="size-6" />
                   </span>
                   <div>
-                    <dt className="font-display text-sm tracking-[0.14em] text-gold-600 uppercase">
-                      Address
+                    <dt className="text-lg font-semibold text-ink">
+                      Our Office
                     </dt>
-                    <dd className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">
-                      {company.address.lines.map((l) => (
-                        <span key={l} className="block">
-                          {l}
-                        </span>
-                      ))}
+                    <dd className="mt-1 text-[16px] leading-relaxed text-ink-soft">
+                      {company.legalName} {company.address.lines.join(" ")}
                     </dd>
                   </div>
                 </Reveal>
 
-                <Reveal delay={140} className="flex gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-cream text-gold-600">
-                    <PhoneIcon className="size-5" />
+                <Reveal delay={90} className="flex gap-5">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-gold-100 text-ink">
+                    <MailIcon className="size-6" />
                   </span>
                   <div>
-                    <dt className="font-display text-sm tracking-[0.14em] text-gold-600 uppercase">
-                      Phone
+                    <dt className="text-lg font-semibold text-ink underline underline-offset-4">
+                      Email us
                     </dt>
-                    <dd className="mt-1.5 space-y-1 text-[15px] text-ink-soft">
-                      {company.phones.map((p) => (
-                        <a
-                          key={p}
-                          href={`tel:${p.replace(/\s/g, "")}`}
-                          className="block transition-colors hover:text-gold-600"
-                        >
-                          {p}
-                        </a>
-                      ))}
-                    </dd>
-                  </div>
-                </Reveal>
-
-                <Reveal delay={200} className="flex gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-cream text-gold-600">
-                    <MailIcon className="size-5" />
-                  </span>
-                  <div>
-                    <dt className="font-display text-sm tracking-[0.14em] text-gold-600 uppercase">
-                      Email
-                    </dt>
-                    <dd className="mt-1.5 text-[15px] text-ink-soft">
+                    <dd className="mt-1 text-[16px] text-ink-soft">
                       <a
                         href={`mailto:${company.email}`}
-                        className="break-all transition-colors hover:text-gold-600"
+                        className="break-all underline underline-offset-4 transition-colors hover:text-gold-600"
                       >
                         {company.email}
                       </a>
@@ -103,47 +80,41 @@ export default function ContactPage() {
                   </div>
                 </Reveal>
 
-                <Reveal delay={260} className="flex gap-4">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-cream text-gold-600">
-                    <DocIcon className="size-5" />
+                <Reveal delay={180} className="flex gap-5">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-gold-100 text-ink">
+                    <PhoneIcon className="size-6" />
                   </span>
                   <div>
-                    <dt className="font-display text-sm tracking-[0.14em] text-gold-600 uppercase">
-                      GSTIN
+                    <dt className="text-lg font-semibold text-ink underline underline-offset-4">
+                      Call us
                     </dt>
-                    <dd className="mt-1.5 text-[15px] text-ink-soft">
-                      {company.gstin}
+                    <dd className="mt-1 space-y-0.5 text-[16px] text-ink-soft">
+                      {company.phones.map((p) => (
+                        <a
+                          key={p}
+                          href={`tel:${p.replace(/\s/g, "")}`}
+                          className="block underline underline-offset-4 transition-colors hover:text-gold-600"
+                        >
+                          {p}
+                        </a>
+                      ))}
                     </dd>
                   </div>
                 </Reveal>
               </dl>
-
-              <Reveal delay={320}>
-                <div className="mt-9 flex gap-3">
-                  {company.socials.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className="flex size-11 items-center justify-center rounded-full border border-cream-dark text-gold-600 transition-all hover:border-gold-500 hover:bg-gold-500 hover:text-white"
-                    >
-                      <SocialIcon name={s.label} className="size-[18px]" />
-                    </a>
-                  ))}
-                </div>
-              </Reveal>
             </div>
 
-            {/* Form */}
-            <Reveal delay={120} className="lg:col-span-7">
-              <div className="rounded-2xl border border-cream-dark bg-cream/40 p-7 sm:p-10">
-                <h2 className="text-2xl sm:text-3xl">Send us a message</h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
-                  Share the products and volumes you are after and we will
-                  respond with specifications and pricing.
+            {/* Send us a message */}
+            <Reveal delay={140}>
+              <div className="rounded-2xl bg-white p-7 shadow-[0_10px_45px_rgba(31,31,31,0.10)] sm:p-10">
+                <h2 className="text-3xl font-semibold sm:text-4xl">
+                  Send us a message
+                </h2>
+                <p className="mt-4 text-[16px] leading-relaxed text-ink-soft">
+                  Fill out the form below and our team will get back to you
+                  shortly.
                 </p>
+
                 <div className="mt-8">
                   <AppointmentForm variant="message" />
                 </div>
@@ -154,23 +125,16 @@ export default function ContactPage() {
       </section>
 
       {/* Map */}
-      <section className="bg-cream/60 pb-20 lg:pb-28">
+      <section className="bg-white pb-16 lg:pb-24">
         <div className="container-x">
-          <SectionHeading
-            eyebrow="Find us"
-            title="Visit Our Office"
-            body="We are based in Kakkanad, Ernakulam — a short drive from Kochi."
-          />
-          <Reveal delay={120} className="mt-12">
-            <div className="overflow-hidden rounded-2xl border border-cream-dark shadow-[0_10px_40px_rgba(31,31,31,0.07)]">
-              <iframe
-                title="Zenvitaa Exports office location"
-                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[380px] w-full border-0 lg:h-[460px]"
-              />
-            </div>
+          <Reveal className="overflow-hidden rounded-lg">
+            <iframe
+              title="Zenvitaa Exports office location"
+              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="h-[320px] w-full border-0 sm:h-[380px]"
+            />
           </Reveal>
         </div>
       </section>

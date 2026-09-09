@@ -99,6 +99,26 @@ export function SearchIcon({ className }: IconProps) {
   );
 }
 
+export function CheckIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8.2 12.3l2.6 2.6 5-5.2" />
+    </svg>
+  );
+}
+
+export function HandshakeIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M2.5 9.5L6 7l3.2 1.6 2.8-.8 2.8.8L18 7l3.5 2.5" />
+      <path d="M9.2 8.6L6.6 11a1.7 1.7 0 0 0 2.3 2.5l1.5-1.2 2.3 2.1a1.5 1.5 0 0 0 2.1-2.2" />
+      <path d="M14.7 12.2l2 1.8a1.5 1.5 0 0 0 2.1-2.2l-2.4-2.2" />
+      <path d="M2.5 9.5l2.2 4.8M21.5 9.5l-2.2 4.8" />
+    </svg>
+  );
+}
+
 export function ArrowIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} {...base}>

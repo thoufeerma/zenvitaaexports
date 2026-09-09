@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import AboutSection from "@/components/AboutSection";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import ContactSection from "@/components/ContactSection";
+import FutureOfFood from "@/components/FutureOfFood";
+import ElanoraSection from "@/components/ElanoraSection";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
-import Image from "next/image";
-import { certificates } from "@/lib/site";
+import { aboutImages, aboutHeroIntro, certificates } from "@/lib/site";
 import { LeafIcon, ShieldIcon, GlobeIcon, BoxIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -42,14 +42,18 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="Who we are"
         title="About Us"
-        body="A Kerala-based exporter of coconut products and premium food powders, built around consistent quality and dependable supply."
+        body={aboutHeroIntro}
+        image={aboutImages.hero}
+        align="left"
+        showCrumb={false}
       />
 
-      <AboutSection />
+      <AboutSection variant="about" />
 
-      <section className="bg-cream/60 py-20 lg:py-28">
+      <FutureOfFood />
+
+      <section className="bg-white py-20 lg:py-28">
         <div className="container-x">
           <SectionHeading
             eyebrow="Our Commitment"
@@ -62,9 +66,9 @@ export default function AboutPage() {
               <Reveal
                 key={s.title}
                 delay={(i % 4) * 90}
-                className="group rounded-2xl bg-white p-8 shadow-[0_2px_18px_rgba(31,31,31,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_50px_rgba(31,31,31,0.1)]"
+                className="group rounded-2xl bg-cream/50 p-8 transition-all duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_22px_50px_rgba(31,31,31,0.1)]"
               >
-                <span className="flex size-13 items-center justify-center rounded-full bg-cream p-3.5 text-gold-600 transition-all duration-300 group-hover:bg-gold-500 group-hover:text-white">
+                <span className="flex size-13 items-center justify-center rounded-full bg-white p-3.5 text-gold-600 transition-all duration-300 group-hover:bg-gold-500 group-hover:text-white">
                   <s.icon className="size-6" />
                 </span>
                 <h3 className="mt-5 text-lg">{s.title}</h3>
@@ -77,28 +81,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Registrations */}
-      <section className="bg-white py-20 lg:py-28">
+      {/* Certifications — shown large enough to actually read */}
+      <section className="bg-cream/50 py-20 lg:py-28">
         <div className="container-x">
           <SectionHeading
             eyebrow="Registrations"
-            title="Licensed and Registered"
+            title="Certifications &amp; Compliance"
             body="Our licences and registrations are available to buyers on request."
           />
 
-          <div className="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
+          <div className="mt-14 grid gap-8 sm:grid-cols-2">
             {certificates.map((c, i) => (
               <Reveal
                 key={c.label}
                 delay={i * 110}
-                className="overflow-hidden rounded-2xl border border-cream-dark bg-cream/40 p-5"
+                className="overflow-hidden rounded-2xl bg-white p-4 shadow-[0_2px_20px_rgba(31,31,31,0.06)] sm:p-5"
               >
-                <div className="relative aspect-3/4 overflow-hidden rounded-lg bg-white">
+                {/* A4 portrait, matching the source scans */}
+                <div className="relative aspect-[1087/1536] overflow-hidden rounded-lg bg-white">
                   <Image
                     src={c.src}
                     alt={c.label}
                     fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
+                    sizes="(max-width: 640px) 92vw, 46vw"
                     className="object-contain"
                   />
                 </div>
@@ -111,8 +116,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <WhyChooseUs />
-      <ContactSection />
+      <ElanoraSection />
     </>
   );
 }

@@ -26,7 +26,7 @@ export default function ProductGrid({ limit }: { limit?: number }) {
               as="article"
               className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_2px_18px_rgba(31,31,31,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_50px_rgba(31,31,31,0.11)]"
             >
-              <div className="relative aspect-4/3 overflow-hidden">
+              <div className="relative aspect-3/2 overflow-hidden bg-cream">
                 {p.image ? (
                   <Image
                     src={p.image}
