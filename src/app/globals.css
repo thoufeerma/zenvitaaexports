@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette lifted from the Zenvitaa identity */
+  --color-gold-50: #fdfaf4;
+  --color-gold-100: #f8f0e0;
+  --color-gold-200: #efdfc2;
+  --color-gold-300: #e2c89b;
+  --color-gold-400: #d4b17f;
+  --color-gold-500: #c8a06a;
+  --color-gold-600: #a3804f;
+  --color-gold-700: #82653e;
+  --color-gold-800: #5f4a2d;
+  --color-gold-900: #3d301d;
+
+  --color-cream: #f5f1e8;
+  --color-cream-dark: #ece5d6;
+  --color-ink: #1f1f1f;
+  --color-ink-soft: #484848;
+  --color-ink-deep: #171717;
+
+  --font-display: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: marquee 32s linear infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-ink-soft);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-gold-500);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Scroll reveal. Rendered hidden on the server so the markup hydrates
+     identically, then revealed by an IntersectionObserver. A <noscript>
+     override in the layout keeps everything visible without JavaScript. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Small caps eyebrow used above most section titles */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold-600);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-gold-500);
+  }
+
+  .eyebrow-center::after {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-gold-500);
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
