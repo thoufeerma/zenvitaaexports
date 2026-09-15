@@ -33,7 +33,6 @@ export default function CoirSpecs() {
           {coirSpecs.map((spec, i) => (
             <Reveal key={spec.name} as="article" className="scroll-mt-24">
               <h3 className="flex items-baseline gap-3 text-2xl font-semibold sm:text-[28px]">
-                <span className="text-coir">{i + 1}.</span>
                 {spec.name}
               </h3>
 

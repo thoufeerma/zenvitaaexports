@@ -47,8 +47,7 @@ export default function Hero() {
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
               Semi-husked coconuts, coconut milk powder, desiccated coconut,
               virgin coconut oil, mango powder, bubble tea taro powder and sweet
-              potato powder — sourced in Kerala and shipped to food manufacturers
-              around the world.
+              potato powder — sourced in Kerala and shipped around the world.
             </p>
           </FadeUp>
 
